@@ -121,6 +121,12 @@ server.delete('/items/:id', (req, res) => {
 //   console.log(`server is listening on port ${port}`);
 // });
 
+server.use(express.static(path.join(__dirname, 'client/build')));
+
+server.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
+
 const port = process.env.PORT || 3333;
 server.listen(port);
 console.log(`Listening on ${port}`);
