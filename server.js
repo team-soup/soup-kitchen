@@ -116,7 +116,11 @@ server.delete('/items/:id', (req, res) => {
   }
 });
 
-server.listen(port, err => {
-  if (err) console.log(err);
-  console.log(`server is listening on port ${port}`);
-});
+// server.listen(port, err => {
+//   if (err) console.log(err);
+//   console.log(`server is listening on port ${port}`);
+// });
+
+const port = process.env.PORT || 5000;
+server.listen(port);
+console.log(`Listening on ${port}`);
