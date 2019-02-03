@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 //const port = 3333;
-
+const path = require('path');
 const server = express();
 server.use(express.json());
 server.use(cors());
@@ -123,7 +123,7 @@ server.delete('/items/:id', (req, res) => {
 
 server.use(express.static(path.join(__dirname, 'client/build')));
 
-server.get('/', (req, res) => {
+server.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname+'/client/build/index.html'));
   });
 
