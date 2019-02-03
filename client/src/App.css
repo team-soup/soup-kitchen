@@ -1,0 +1,139 @@
+
+/* CSS Variables */
+
+:root { 
+  --link-text-color-on-hover: rgb(59, 181, 218);
+  --link-bg-on-hover: rgb(254, 254, 254);
+}
+
+/* Global Styles */
+
+/* Recommend 0.1 to 0.15s ease-in-out for most hover transitions */
+
+html {
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-size: 62.5%;
+}
+
+.App {
+  margin: 0 auto;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  margin-left: auto;
+}
+
+nav a {
+  margin: 0 20px 0 20px;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+  color: black;
+  text-decoration: none;
+  transition: 0.10s ease-in-out;
+  background-color: rgb(238, 234, 226);
+}
+
+nav a:hover {
+  background-color: var(--link-bg-on-hover);
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border: none;
+  color: var(--link-text-color-on-hover);
+}
+
+header {
+  background-color: rgb(245, 243, 239);
+}
+.nav-wrap {
+  max-width: 1100px;
+  height: 100px;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav-wrap h1 {
+  margin: 0 0 0 23px;
+  padding: 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: normal;
+}
+
+.nav-wrap h2 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+}
+
+.items-list-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-card {
+  width: 250px;
+  margin: 0 10px 30px;
+}
+
+.item-card p {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+  color: rgb(25, 26, 25);
+  transition: 0.15s ease-in-out;
+}
+
+.item-card:hover .text-bubble {
+  transform: scaleX(1.03) translateY(-10px);
+  background-color: var(--link-bg-on-hover);
+  border-radius: 0;
+}
+
+.item-card:hover .item-list-image {
+  filter: brightness(0.9);
+  transform: scale(1.02);
+}
+
+.item-card:hover p {
+  color: var(--link-text-color-on-hover);
+}
+
+.text-bubble {
+  padding: 10px;
+  background-color: #F0F1EF;
+  border-radius: 3px;
+  margin: 0 auto;
+  transform: translateY(-10px);
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.quantity {
+  font-size: 2.0rem;
+}
+
+.item-list-image {
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
