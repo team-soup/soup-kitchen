@@ -34,9 +34,9 @@ nav {
 }
 
 nav a {
-  margin: 0 20px 0 20px;
+  margin: 0 10px 0 10px;
   padding: 10px 20px 10px 20px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   letter-spacing: 0.05rem;
   font-weight: normal;
   color: black;
@@ -90,7 +90,7 @@ header {
 }
 
 .item-card {
-  width: 250px;
+  width: 150px;
   margin: 0 10px 30px;
 }
 
@@ -136,4 +136,12 @@ header {
   border-radius: 3px;
   cursor: pointer;
   transition: 0.15s ease-in-out;
+}
+
+.form-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }

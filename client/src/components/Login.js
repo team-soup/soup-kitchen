@@ -105,7 +105,7 @@ class Login extends React.Component {
                             <InputText type="text" placeholder="Email"/>
                             <InputText type="password" placeholder="Password"/>
                             <LoginButton type="submit" value="Log In"></LoginButton>
-                            <LinkButton className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
+                            <LinkButton type="button" className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
                         </LoginForm>
                         
                     </LoginContainer> 
@@ -120,7 +120,7 @@ class Login extends React.Component {
                             <InputText type="text" placeholder="Email"/>
                             <InputText type="password" placeholder="Password"/>
                             <LoginButton type="submit" value="Log In"></LoginButton>
-                            <LinkButton className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
+                            <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
                         </LoginForm>
                         
                     </RegisterContainer>

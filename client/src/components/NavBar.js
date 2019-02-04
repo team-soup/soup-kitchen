@@ -1,5 +1,6 @@
 import React from "react";
 import crockpot from "../img/crockpot_logo.png"
+import {NavLink} from "react-router-dom";
 
 const NavBar = props => {
     return (
@@ -11,8 +12,9 @@ const NavBar = props => {
                     <h2>Admin Panel</h2>
                     </div>
                 <nav>
-                    <a href="#">Add Inventory</a>
-                    <a href="#">Edit Existing Inventory</a>
+                    <NavLink to="/">View Inventory</NavLink>
+                    <NavLink to="/add">Add Inventory</NavLink>
+                    <NavLink to="/edit">Edit Inventory</NavLink>
                 </nav>
             </div>
         </header>

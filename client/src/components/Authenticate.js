@@ -31,7 +31,10 @@ const Authenticate = App => LoginPage => {
                 localStorage.setItem("token", response.data.decodedToken)
                 this.setState({loggedIn: true});
               })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err)
+                this.setState({loggedIn: true}) // TODO: TEMPORARY WHILE SERVER IS BEING WORKED ON
+            });
           }
         handleRegister = (event) => {
             event.preventDefault();
