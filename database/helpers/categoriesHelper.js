@@ -5,7 +5,7 @@ module.exports = {
 		const categories =  db('categories').select('id', 'name');
 		const category = db('categories').select('id', 'name').where({ id }).first();
 		const items = db('items')
-			.select('id', 'name', 'amount', 'unit')
+			.select('id', 'name', 'amount', 'unit', 'imageURL', 'categoryID')
 			.where('categoryID', id);
 
 		if (id) {

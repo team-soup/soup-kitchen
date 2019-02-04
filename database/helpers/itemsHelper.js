@@ -7,10 +7,11 @@ module.exports = {
 			'name',
 			'amount',
 			'unit',
+			'imageURL',
 			'categoryID'
 		);
 		const item = db('items')
-			.select('id', 'name', 'amount', 'unit', 'categoryID')
+			.select('id', 'name', 'amount', 'unit', 'imageURL','categoryID')
 			.where('id', id)
 			.first();
 

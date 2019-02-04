@@ -5,7 +5,7 @@ const NavBar = props => {
     return (
         <header>
             <div className="nav-wrap">
-                <img className="logo" src={crockpot}/>
+                <img alt="crockpot" className="logo" src={crockpot}/>
                 <div className="header-text">
                     <h1>Soup Kitchen</h1>
                     <h2>Admin Panel</h2>

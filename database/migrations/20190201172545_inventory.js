@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
 			.unique();
 		table.integer('amount').notNullable();
 		table.string('unit')
+		table.string('imageURL')
 		table
 			.integer('categoryID')
 			.unsigned()
