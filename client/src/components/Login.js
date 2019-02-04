@@ -1,7 +1,6 @@
 import React from "react";
 import soup from "../img/crockpot_logo.png"
 import styled from "styled-components";
-import axios from "axios";
 
 const Wrapper = styled.div `
     display: flex;
@@ -22,6 +21,16 @@ const LoginContainer = styled.div`
     border: 1px solid #e2e2e2;
     border-radius: 3px;
     `;
+
+const RegisterContainer = styled.div`
+    margin: 30px 0 0 0;
+    width: 100%;
+    height: 500px;
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    `;
+
 
 const ImageContainer = styled.div`
     width: 54%;
@@ -61,37 +70,62 @@ const LoginButton = styled.input`
     cursor: pointer;
 `;
 
+const LinkButton = styled.button`
+    color: blue;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    padding: 10px;
+    margin-top: 50px;
+`;
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            token: null,
+            display: "login",
         }
     }
-    handleLogin = (email, password) => {
-        axios
-        .post('http://localhost:8000/api/staff/login', {email, password})
-        .then(response => 
-          {
-            console.log(response.data.message)
-            this.setState({token: response.data.token})
-          })
-        .catch(err => console.log(err));
+    showRegister = () => {
+        this.setState({display : "register"})
+    }
+    showLogin = () => {
+        this.setState({display: "login"})
     }
     render() {
         return (
             <Wrapper>
                 <FormContainer>
+                    { this.state.display === "login" ?                     
                     <LoginContainer>
                         <ImageContainer>
                             <Image alt="soup" src={soup}/>
                         </ImageContainer>
-                        <LoginForm onSubmit={(e) => {e.preventDefault(); this.handleLogin(e.target[0].value, e.target[1].value)}}>
+                        <LoginForm onSubmit={(e) => {this.props.handleLogin(e)}}>
                             <InputText type="text" placeholder="Email"/>
                             <InputText type="password" placeholder="Password"/>
                             <LoginButton type="submit" value="Log In"></LoginButton>
+                            <LinkButton className="link-button" onClick={this.showRegister}>New User? Register here.</LinkButton>
                         </LoginForm>
-                    </LoginContainer>
+                        
+                    </LoginContainer> 
+                    : 
+                    <RegisterContainer>
+                        <ImageContainer>
+                            <Image alt="soup" src={soup}/>
+                        </ImageContainer>
+                        <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
+                            <InputText type="text" placeholder="Name"/>
+                            <InputText type="text" placeholder="Role"/>
+                            <InputText type="text" placeholder="Email"/>
+                            <InputText type="password" placeholder="Password"/>
+                            <LoginButton type="submit" value="Log In"></LoginButton>
+                            <LinkButton className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
+                        </LoginForm>
+                        
+                    </RegisterContainer>
+                    
+                    }
                 </FormContainer>
             </Wrapper>
         )

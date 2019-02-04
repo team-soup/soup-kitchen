@@ -37,9 +37,9 @@ const Authenticate = App => LoginPage => {
             event.preventDefault();
             let registerObj = {
                 name : event.target[0].value,
-                email : event.target[1].value,
-                password : event.target[2].value,
-                role : event.target[3].value,
+                role : event.target[1].value,
+                email : event.target[2].value,
+                password : event.target[3].value,
             }
             axios
             .post('http://localhost:8000/api/staff/register', registerObj)
