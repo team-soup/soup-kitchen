@@ -6,51 +6,6 @@ import {Route} from "react-router-dom";
 import AddInventory from "./AddInventory";
 import EditInventory from "./EditInventory";
 
-let stock = [
-    {
-      id: 0,
-      name: 'apples',
-      quantity: 100,
-      unit: 'oz',
-      imageUrl: "https://i.imgur.com/pMfBRRt.jpg"
-    },
-    {
-      id: 1,
-      name: 'bananas',
-      quantity: 200,
-      unit: 'oz',
-      imageUrl: "https://i.imgur.com/9ny4c0E.jpg"
-    },
-    {
-      id: 2,
-      name: 'potatoes',
-      quantity: 10,
-      unit: 'lb(s)',
-      imageUrl: "https://i.imgur.com/dRF2mfc.jpg"
-    },
-    {
-      id: 3,
-      name: 'carrots',
-      quantity: 13,
-      unit: 'lb(s)',
-      imageUrl: "https://i.imgur.com/RTZ0qFP.jpg"
-    },
-    {
-      id: 4,
-      name: 'eggs',
-      quantity: 31,
-      unit: 'dozen',
-      imageUrl: "https://i.imgur.com/bQYFZjw.jpg"
-    },
-    {
-      id: 5,
-      name: 'broccoli',
-      quantity: 30,
-      unit: 'oz',
-      imageUrl: "https://i.imgur.com/47fHnED.jpg"
-    },
-  ];
-
 class InventoryPage extends React.Component {
     constructor(props) {
       super(props);
@@ -67,16 +22,42 @@ class InventoryPage extends React.Component {
           })
         .catch(err => {
             console.log(err)
-            this.setState({items: stock}) // TODO: TEMPORARY WHILE AUTH NOT UP
         });
+    }
+    handleAdd = e => {
+        addObj = {
+            name : e.target[0].value,
+            quantity : e.target[1].value,
+            unit : e.target[2].value,
+        }
+        axios
+        .post('http://localhost:3333/items',addObj)
+        .then(response => this.setState({items: response.data}))
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    handleEdit = e => {
+        id = e.target[0].value;
+        editObj = {
+            name : e.target[1].value,
+            quantity : e.target[2].value,
+            unit : e.target[3].value,
+        }
+        axios
+        .put(`http://localhost:3333/items/${id}`,editObj)
+        .then(response => this.setState({items: response.data}))
+        .catch(err => {
+            console.log(err)
+        })
     }
     render() {
       return (
         <div className="inventory-page">
           <NavBar></NavBar>
           <Route exact path="/" render={(props) => <Inventory items={this.state.items} {...props}/>}/>
-          <Route path="/add" component={AddInventory}/>
-          <Route path="/edit" component={EditInventory}/>
+          <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
+          <Route path="/edit" render={(props) => <EditInventory handleEdit={this.handleEdit} {...props}/>}/>
         </div>
       );
     }
