@@ -14,7 +14,7 @@ const NavBar = props => {
                 <nav>
                     <NavLink to="/">View Inventory</NavLink>
                     <NavLink to="/add">Add Inventory</NavLink>
-                    <NavLink to="/edit">Edit Inventory</NavLink>
+                    {/* <NavLink to="/edit">Edit Inventory</NavLink> */}
                 </nav>
             </div>
         </header>

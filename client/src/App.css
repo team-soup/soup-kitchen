@@ -156,7 +156,7 @@ header {
   font-weight: normal;
 }
 
-form {
+.item-form {
   display: flex;
   flex-direction: column;
   box-shadow: 0.2rem 0.2rem 0.2rem #c7c8ce;
@@ -167,14 +167,14 @@ form {
   padding: 30px
 }
 
-input {
+.item-input {
   margin: 10px;
   border: none;
   padding: 10px;
   border-radius: 3px;
 }
 
-input[type=submit] {
+.item-input[type=submit] {
   padding:20px 15px; 
   background:#2e964f;
   color: white;
@@ -185,7 +185,77 @@ input[type=submit] {
   transition: 0.1s ease-in-out;
 }
 
-input[type=submit]:hover {
+.item-input[type=submit]:hover {
   background-color: #125226;
   color: white;
+}
+
+/* individual item view */
+
+.item-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-title-wrapper h2 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.item-title-wrapper h4 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+}
+
+.update-button {
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(36, 90, 190);
+  color: rgb(36, 90, 190);
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  transition: 0.1s ease-in-out;
+}
+
+.update-button:hover {
+  background-color: rgb(225, 235, 255);
+  border: 1px solid (36, 90, 190);
+}
+
+.delete-button {
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(238, 23, 51);
+  color: rgb(238, 23, 51);
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  transition: 0.1s ease-in-out;
+}
+
+.delete-button:hover {
+  background-color: rgb(255, 223, 227);
+  border: 1px solid (36, 90, 190);
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  height: 80px;
+  justify-content: space-between;
 }

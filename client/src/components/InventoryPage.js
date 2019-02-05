@@ -5,6 +5,7 @@ import axios from "axios";
 import {Route} from "react-router-dom";
 import AddInventory from "./AddInventory";
 import EditInventory from "./EditInventory";
+import Item from "./Item";
 
 class InventoryPage extends React.Component {
     constructor(props) {
@@ -61,6 +62,7 @@ class InventoryPage extends React.Component {
             {
                 console.log(response.data);
                 this.setState({items: response.data.items})
+                alert("Add successful!") // TODO: make nicer alert in a div
             })
             .catch(err => {
                 console.log(err)
@@ -105,13 +107,43 @@ class InventoryPage extends React.Component {
         })
         e.target.reset();
     }
+    updateItem = (e, item) => {
+
+    }
+
+    deleteItem = (e, itemID, history) => {
+        e.preventDefault();
+        let options = { 
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            }}
+        axios
+        .delete(`https://soup-kitchen-backend.herokuapp.com/api/items/${itemID}`, options)
+        .then(response => { 
+            console.log("deleted records: " + response.data.deletedRecords);
+            axios
+            .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+            .then(response => 
+            {
+                console.log(response.data);
+                this.setState({items: response.data.items})
+            })
+            .catch(err => {
+                console.log(err)
+            });
+            history.push(`/`);
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
       return (
         <div className="inventory-page">
           <NavBar></NavBar>
           <Route exact path="/" render={(props) => <Inventory items={this.state.items} {...props}/>}/>
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
-          <Route path="/edit" render={(props) => <EditInventory handleEdit={this.handleEdit} {...props}/>}/>
+          {/* <Route path="/edit" render={(props) => <EditInventory handleEdit={this.handleEdit} {...props}/>}/> */}
+          <Route path="/inventory/:id" render={(props) => <Item items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
         </div>
       );
     }
