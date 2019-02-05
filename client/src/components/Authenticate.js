@@ -38,10 +38,11 @@ const Authenticate = App => LoginPage => {
         handleRegister = (event) => {
             event.preventDefault();
             let registerObj = {
-                name : event.target[0].value,
-                role : event.target[1].value,
-                email : event.target[2].value,
-                password : event.target[3].value,
+                firstname : event.target[0].value,
+                lastname : event.target[1].value,
+                role : event.target[2].value,
+                email : event.target[3].value,
+                password : event.target[4].value,
             }
             axios
             .post('https://soup-kitchen-backend.herokuapp.com/api/staff/register', registerObj)

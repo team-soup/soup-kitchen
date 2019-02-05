@@ -4,6 +4,7 @@
 :root { 
   --link-text-color-on-hover: rgb(59, 181, 218);
   --link-bg-on-hover: rgb(254, 254, 254);
+  --header-color: rgb(245, 243, 239);
 }
 
 /* Global Styles */
@@ -43,6 +44,7 @@ nav a {
   text-decoration: none;
   transition: 0.10s ease-in-out;
   background-color: rgb(238, 234, 226);
+  border-radius: 3px;
 }
 
 nav a:hover {
@@ -52,8 +54,33 @@ nav a:hover {
   color: var(--link-text-color-on-hover);
 }
 
+.selected-nav {
+  background-color: var(--link-bg-on-hover);
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border: none;
+  color: var(--link-text-color-on-hover);
+}
+
+.logout {
+  margin: 0 10px 0 10px;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+  color: rgb(180, 137, 51);
+  text-decoration: none;
+  transition: 0.15s ease-in-out;
+  background-color: var(--header-color);
+  border: 1px solid rgb(180, 137, 51);
+  border-radius: 3px;
+}
+
+.logout:hover {
+  background-color:rgb(255, 251, 243)
+}
+
 header {
-  background-color: rgb(245, 243, 239);
+  background-color: var(--header-color);
 }
 .nav-wrap {
   max-width: 1100px;
@@ -138,6 +165,8 @@ header {
   transition: 0.15s ease-in-out;
 }
 
+/* Item forms for adding or editing */
+
 .form-wrapper {
   display: flex;
   flex-direction: column;
@@ -172,6 +201,7 @@ header {
   border: none;
   padding: 10px;
   border-radius: 3px;
+  font-size: 1.2rem;
 }
 
 .item-input[type=submit] {
@@ -188,6 +218,26 @@ header {
 .item-input[type=submit]:hover {
   background-color: #125226;
   color: white;
+}
+
+.edit-button {
+  padding:20px 15px; 
+  background:#2e964f;
+  color: white;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+  transition: 0.1s ease-in-out;
+}
+
+.edit-button:hover {
+  background-color: #125226;
+  color: white;
+}
+
+label {
+  font-size: 1.2rem;
 }
 
 /* individual item view */

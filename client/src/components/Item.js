@@ -1,17 +1,17 @@
 import React from 'react';
 
-const Item = ({ items, deleteItem, history, updateItem, match }) => {
+const Item = ({ items, deleteItem, history, match }) => {
   const item = items.find(thing => `${thing.id}` === match.params.id);
 
   if (!item) {
-    return  <div className="item-wrapper"><h2>Loading item data...</h2></div>;
+    return  <div></div>;
   }
 
   return (
     <div className="item-wrapper">
       <div className="item-header">
         <div className="image-wrapper">
-          <img src={item.imageUrl} alt={item.name} />
+          <img src={item.imageURL} alt={item.name} />
         </div>
         <div className="item-title-wrapper">
           <h2>{item.name}</h2>
@@ -22,8 +22,11 @@ const Item = ({ items, deleteItem, history, updateItem, match }) => {
       <div className="button-wrapper">
       <button
         onClick={event => {
-          updateItem(event, item);
-          history.push(`/edit/${item.id}`);
+          const location = {
+              pathname: `/inventory/edit`,
+              state: { item }
+          }
+          history.push(location);
         }}
         className="update-button"
       >

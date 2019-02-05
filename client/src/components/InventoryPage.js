@@ -4,8 +4,8 @@ import Inventory from "./Inventory";
 import axios from "axios";
 import {Route} from "react-router-dom";
 import AddInventory from "./AddInventory";
-import EditInventory from "./EditInventory";
 import Item from "./Item";
+import ItemEditForm from "./ItemEditForm";
 
 class InventoryPage extends React.Component {
     constructor(props) {
@@ -107,9 +107,6 @@ class InventoryPage extends React.Component {
         })
         e.target.reset();
     }
-    updateItem = (e, item) => {
-
-    }
 
     deleteItem = (e, itemID, history) => {
         e.preventDefault();
@@ -136,14 +133,19 @@ class InventoryPage extends React.Component {
         .catch(err => console.log(err))
     }
 
+    logOut = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     render() {
       return (
         <div className="inventory-page">
-          <NavBar></NavBar>
+          <NavBar logOut={this.logOut}></NavBar>
           <Route exact path="/" render={(props) => <Inventory items={this.state.items} {...props}/>}/>
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
-          {/* <Route path="/edit" render={(props) => <EditInventory handleEdit={this.handleEdit} {...props}/>}/> */}
           <Route path="/inventory/:id" render={(props) => <Item items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
+          <Route path="/inventory/edit" render={(props) => <ItemEditForm items={this.state.items} {...props}/>} />
         </div>
       );
     }

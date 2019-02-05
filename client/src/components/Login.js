@@ -115,7 +115,8 @@ class Login extends React.Component {
                             <Image alt="soup" src={soup}/>
                         </ImageContainer>
                         <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
-                            <InputText type="text" placeholder="Name"/>
+                            <InputText type="text" placeholder="First Name"/>
+                            <InputText type="text" placeholder="Last Name"/>
                             <InputText type="text" placeholder="Role"/>
                             <InputText type="text" placeholder="Email"/>
                             <InputText type="password" placeholder="Password"/>
