@@ -4,10 +4,12 @@ const AddInventory = props => {
     return (
         <div className="form-wrapper">
             <h2>Add items to inventory with this form:</h2>
-            <form>
+            <form onSubmit={props.handleAdd}>
                 <input type="text" placeholder="name"/>
                 <input type="number" placeholder="quantity"/>
                 <input type="text" placeholder="units"/>
+                <input type="text" placeholder="image URL"/>
+                <input type="number" placeholder="category ID"/>
                 <input type="submit"/>
             </form>
         </div>

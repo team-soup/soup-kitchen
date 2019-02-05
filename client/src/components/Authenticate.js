@@ -20,20 +20,19 @@ const Authenticate = App => LoginPage => {
             event.preventDefault();
             let loginObj = {
                 email : event.target[0].value,
-                password : event.target[0].value,
+                password : event.target[1].value,
             }
             axios
-            .post('http://localhost:8000/api/staff/login', loginObj)
+            .post('https://soup-kitchen-backend.herokuapp.com/api/staff/login',loginObj)
             .then(response => 
               {
-                console.log(response.data.message)
-                this.setState({token: response.data.decodedToken})
-                localStorage.setItem("token", response.data.decodedToken)
+                console.log(response.data)
+                this.setState({token: response.data.token})
+                localStorage.setItem("token", response.data.token)
                 this.setState({loggedIn: true});
               })
             .catch(err => {
                 console.log(err)
-                this.setState({loggedIn: true}) // TODO: TEMPORARY WHILE SERVER IS BEING WORKED ON
             });
           }
         handleRegister = (event) => {
@@ -45,11 +44,13 @@ const Authenticate = App => LoginPage => {
                 password : event.target[3].value,
             }
             axios
-            .post('http://localhost:8000/api/staff/register', registerObj)
+            .post('https://soup-kitchen-backend.herokuapp.com/api/staff/register', registerObj)
             .then(response => 
               {
                 console.log(response.data.message)
-                this.setState({token: response.data.decodedToken})
+                this.setState({token: response.data.token})
+                localStorage.setItem("token", response.data.token)
+                this.setState({loggedIn: true});
               })
             .catch(err => console.log(err));
           }

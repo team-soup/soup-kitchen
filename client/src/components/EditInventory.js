@@ -8,6 +8,8 @@ const EditInventory = props => {
                 <input type="text" placeholder="name"/>
                 <input type="number" placeholder="quantity"/>
                 <input type="text" placeholder="units"/>
+                <input type="text" placeholder="image URL"/>
+                <input type="number" placeholder="category ID"/>
                 <input type="submit"/>
             </form>
         </div>

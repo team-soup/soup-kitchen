@@ -139,9 +139,53 @@ header {
 }
 
 .form-wrapper {
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 50px;
   display: flex;
   justify-content: center;
+}
+
+.form-wrapper h2 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.2rem 0.2rem 0.2rem #c7c8ce;
+  background-color: #EFF9F0;
+  border-radius: 3px;
+  width: 600px;
+  margin: 30px auto;
+  padding: 30px
+}
+
+input {
+  margin: 10px;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+input[type=submit] {
+  padding:20px 15px; 
+  background:#2e964f;
+  color: white;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+  transition: 0.1s ease-in-out;
+}
+
+input[type=submit]:hover {
+  background-color: #125226;
+  color: white;
 }

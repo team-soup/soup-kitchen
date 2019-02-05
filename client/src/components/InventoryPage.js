@@ -11,45 +11,99 @@ class InventoryPage extends React.Component {
       super(props);
       this.state = {
         items: [],
+        token: null,
       }
     }
     componentDidMount() {
-      axios
-        .get('http://localhost:3333/items') // TODO: TEMP SERVER
+        if (localStorage.getItem("token")) {
+            this.setState({loggedIn: true});
+            this.setState({token:localStorage.getItem("token")});
+        }
+        let options = { 
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            }}
+        axios
+        .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
         .then(response => 
-          {
-            this.setState({items: response.data})
-          })
+        {
+            console.log(response.data);
+            this.setState({items: response.data.items})
+        })
         .catch(err => {
             console.log(err)
         });
     }
     handleAdd = e => {
-        addObj = {
+        e.preventDefault();
+        let addObj = {
             name : e.target[0].value,
-            quantity : e.target[1].value,
+            amount : e.target[1].value,
             unit : e.target[2].value,
+            imageUrl : e.target[3].value,
+            categoryID : e.target[4].value,
         }
+        console.log(addObj)
+        let options = { 
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            }}
         axios
-        .post('http://localhost:3333/items',addObj)
-        .then(response => this.setState({items: response.data}))
+        .post('https://soup-kitchen-backend.herokuapp.com/api/items',addObj,options)
+        .then(response => {
+            let options = { 
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                }}
+            axios
+            .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+            .then(response => 
+            {
+                console.log(response.data);
+                this.setState({items: response.data.items})
+            })
+            .catch(err => {
+                console.log(err)
+            });
+                })
         .catch(err => {
             console.log(err)
         })
+        e.target.reset()
     }
     handleEdit = e => {
-        id = e.target[0].value;
-        editObj = {
+        e.preventDefault();
+        let id = e.target[0].value;
+        let editObj = {
             name : e.target[1].value,
-            quantity : e.target[2].value,
+            amount : e.target[2].value,
             unit : e.target[3].value,
+            imageUrl : e.target[3].value,
+            categoryID : e.target[4].value,
         }
         axios
-        .put(`http://localhost:3333/items/${id}`,editObj)
-        .then(response => this.setState({items: response.data}))
+        .put(`https://soup-kitchen-backend.herokuapp.com/api/items/${id}`,editObj)
+        .then(response => {
+            console.log("Updated " + response.data + " item")
+            let options = { 
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                }}
+            axios
+            .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+            .then(response => 
+            {
+                console.log(response.data);
+                this.setState({items: response.data.items})
+            })
+            .catch(err => {
+                console.log(err)
+            });
+        })
         .catch(err => {
             console.log(err)
         })
+        e.target.reset();
     }
     render() {
       return (
