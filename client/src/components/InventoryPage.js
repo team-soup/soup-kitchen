@@ -28,7 +28,6 @@ class InventoryPage extends React.Component {
         .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
         .then(response => 
         {
-            console.log(response.data);
             this.setState({items: response.data.items})
         })
         .catch(err => {

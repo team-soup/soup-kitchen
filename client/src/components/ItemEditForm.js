@@ -1,5 +1,4 @@
 import React from 'react';
-//import { withRouter } from 'react-router';
 import axios from "axios";
 
 class ItemEditForm extends React.Component {
@@ -46,7 +45,6 @@ class ItemEditForm extends React.Component {
         this.state.item,options
       )
       .then(response => {
-        console.log(response)
         this.props.handleUpdate();
         alert("Item updated successfully!")
         this.props.history.push("/");
@@ -123,5 +121,4 @@ class ItemEditForm extends React.Component {
   }
 }
 
-//export default withRouter(ItemEditForm);
 export default ItemEditForm;
