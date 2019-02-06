@@ -39,12 +39,11 @@ class InventoryPage extends React.Component {
         e.preventDefault();
         let addObj = {
             name : e.target[0].value,
-            amount : e.target[1].value,
+            amount : parseInt(e.target[1].value),
             unit : e.target[2].value,
             imageUrl : e.target[3].value,
-            categoryID : e.target[4].value,
+            categoryID : parseInt(e.target[4].value),
         }
-        console.log(addObj)
         let options = { 
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -78,10 +77,10 @@ class InventoryPage extends React.Component {
         let id = e.target[0].value;
         let editObj = {
             name : e.target[1].value,
-            amount : e.target[2].value,
+            amount : parseInt(e.target[2].value),
             unit : e.target[3].value,
             imageUrl : e.target[3].value,
-            categoryID : e.target[4].value,
+            categoryID : parseInt(e.target[4].value),
         }
         axios
         .put(`https://soup-kitchen-backend.herokuapp.com/api/items/${id}`,editObj)
