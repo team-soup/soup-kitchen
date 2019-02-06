@@ -12,9 +12,23 @@ const Authenticate = App => LoginPage => {
         }
         componentDidMount() {
             if (localStorage.getItem("token")) {
-                this.setState({loggedIn: true});
                 this.setState({token:localStorage.getItem("token")});
             }
+            let options = { 
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                }}
+            axios
+            .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+            .then(response => 
+            {
+                console.log(response.data);
+                this.setState({loggedIn: true});
+            })
+            .catch(err => {
+                console.log(err)
+                localStorage.clear();
+            });
         }
         handleLogin = (event) => {
             event.preventDefault();

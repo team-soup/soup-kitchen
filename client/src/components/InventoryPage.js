@@ -17,7 +17,6 @@ class InventoryPage extends React.Component {
     }
     componentDidMount() {
         if (localStorage.getItem("token")) {
-            this.setState({loggedIn: true});
             this.setState({token:localStorage.getItem("token")});
         }
         let options = { 
