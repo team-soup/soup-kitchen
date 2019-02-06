@@ -10,7 +10,10 @@ const Inventory = props => {
         {props.items.map(item => (
             item.amount === 0 ?
             <div
-            onClick={e => {routeToItem(e, item); props.clearSearch()}}
+            onClick={e => { 
+                props.clearSearch(); 
+                routeToItem(e, item);
+            }}
             className="item-card-OUT"
             key={item.id}
             >
@@ -27,7 +30,10 @@ const Inventory = props => {
             </div>
             :
             <div
-            onClick={e => routeToItem(e, item)}
+            onClick={e => {
+                props.clearSearch(); 
+                routeToItem(e, item);
+            }}
             className="item-card"
             key={item.id}
             >

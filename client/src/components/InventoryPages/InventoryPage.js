@@ -36,6 +36,7 @@ class InventoryPage extends React.Component {
             console.log(err)
         });
     }
+
     handleAdd = e => {
         e.preventDefault();
         let addObj = {
@@ -118,6 +119,7 @@ class InventoryPage extends React.Component {
         .catch(err => {
             console.log(err)
         });
+        console.log(this.state);
     }
 
     addDefaultSrc = (e) => {
