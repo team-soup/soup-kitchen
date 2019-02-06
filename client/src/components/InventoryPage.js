@@ -71,40 +71,6 @@ class InventoryPage extends React.Component {
         })
         e.target.reset()
     }
-    handleEdit = e => {
-        e.preventDefault();
-        let id = e.target[0].value;
-        let editObj = {
-            name : e.target[1].value,
-            amount : parseInt(e.target[2].value),
-            unit : e.target[3].value,
-            imageUrl : e.target[3].value,
-            categoryID : parseInt(e.target[4].value),
-        }
-        axios
-        .put(`https://soup-kitchen-backend.herokuapp.com/api/items/${id}`,editObj)
-        .then(response => {
-            console.log("Updated " + response.data + " item")
-            let options = { 
-                headers: {
-                    Authorization: localStorage.getItem("token"),
-                }}
-            axios
-            .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
-            .then(response => 
-            {
-                console.log(response.data);
-                this.setState({items: response.data.items})
-            })
-            .catch(err => {
-                console.log(err)
-            });
-        })
-        .catch(err => {
-            console.log(err)
-        })
-        e.target.reset();
-    }
 
     deleteItem = (e, itemID, history) => {
         e.preventDefault();

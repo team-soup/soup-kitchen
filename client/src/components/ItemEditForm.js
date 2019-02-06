@@ -15,10 +15,10 @@ class ItemEditForm extends React.Component {
   componentDidMount() {
       let itemObj = {
         name: this.props.location.state.item.name,
-        amount: this.props.location.state.item.amount,
+        amount: parseInt(this.props.location.state.item.amount),
         unit: this.props.location.state.item.unit,
         imageURL: this.props.location.state.item.imageURL,
-        categoryID: this.props.location.state.item.categoryID,
+        categoryID: parseInt(this.props.location.state.item.categoryID),
       };
       this.setState({
         id: this.props.location.state.item.id,
@@ -39,10 +39,18 @@ class ItemEditForm extends React.Component {
         headers: {
             Authorization: localStorage.getItem("token"),
         }}
+        console.log(this.state.item);
+    let newItemObj = {
+        name: this.state.item.name,
+        amount: parseInt(this.state.item.amount),
+        unit: this.state.item.unit,
+        imageURL: this.state.item.imageURL,
+        categoryID: parseInt(this.state.item.categoryID),
+    }
     axios
       .put(
         `https://soup-kitchen-backend.herokuapp.com/api/items/${this.state.id}`,
-        this.state.item,options
+        newItemObj,options
       )
       .then(response => {
         this.props.handleUpdate();
