@@ -141,11 +141,19 @@ class InventoryPage extends React.Component {
         }
       };
 
+    clearSearch = () => {
+        this.setState({filtered_items: [], searching:false});
+    }
+
     render() {
       return (
         <div className="inventory-page">
-          <NavBar logOut={this.logOut}></NavBar>
-          <Route exact path="/" render={(props) => <InventoryWrapper handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>
+          <NavBar clearSearch={this.clearSearch} logOut={this.logOut}></NavBar>
+          {this.state.searching ? 
+          <Route exact path="/" render={(props) => <InventoryWrapper clearSearch={this.clearSearch} handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.filtered_items} {...props}/>}/> 
+          :
+          <Route exact path="/" render={(props) => <InventoryWrapper clearSearch={this.clearSearch} handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>}
+          
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
           <Route path="/inventory/:id" render={(props) => <Item handleUpdate={this.setStateofInventoryPage} onError={this.addDefaultSrc} items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
           <Route path="/inventory/edit" render={(props) => <ItemEditForm handleUpdate={this.setStateofInventoryPage} items={this.state.items} {...props}/>} />

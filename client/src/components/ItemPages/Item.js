@@ -101,6 +101,7 @@ class Item extends React.Component {
         <button
           onClick={event => {
             this.props.deleteItem(event, item.id, this.props.history);
+            this.props.handleUpdate();
           }}
           className="delete-button"
         >

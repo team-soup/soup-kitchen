@@ -1,12 +1,12 @@
 import React from "react";
 import Inventory from "./Inventory";
+import SearchBar from "../SearchBar/SearchBar";
 
 const InventoryWrapper = props => {
     return (
         <div>
-            <div></div>
-            {/* <SearchBar handleSearch={props.handleSearch}/> */}
-            <Inventory onError={props.onError} items={props.items}/>
+            <SearchBar handleSearch={props.handleSearch}/>
+            <Inventory history={props.history} onError={props.onError} items={props.items}/>
         </div>
     )
 }

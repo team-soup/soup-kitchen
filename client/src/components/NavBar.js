@@ -12,8 +12,8 @@ const NavBar = props => {
                     <h2>Admin Panel</h2>
                     </div>
                 <nav>
-                    <NavLink className="decor" activeClassName="selected-nav" exact to="/">View Inventory</NavLink>
-                    <NavLink className="decor" activeClassName="selected-nav" exact to="/add">Add Inventory</NavLink>
+                    <NavLink className="decor" activeClassName="selected-nav" exact to="/" onClick={props.clearSearch}>View Inventory</NavLink>
+                    <NavLink className="decor" activeClassName="selected-nav" exact to="/add" onClick={props.clearSearch}>Add Inventory</NavLink>
                     <a href="/" className="nodecoration"><button className="logout" onClick={props.logOut}>Log Out</button></a>
                 </nav>
             </div>

@@ -114,7 +114,7 @@ header {
 .items-list-wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
