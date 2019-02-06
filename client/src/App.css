@@ -4,6 +4,7 @@
 :root { 
   --link-text-color-on-hover: rgb(59, 181, 218);
   --link-bg-on-hover: rgb(254, 254, 254);
+  --header-color: rgb(245, 243, 239);
 }
 
 /* Global Styles */
@@ -43,6 +44,7 @@ nav a {
   text-decoration: none;
   transition: 0.10s ease-in-out;
   background-color: rgb(238, 234, 226);
+  border-radius: 3px;
 }
 
 nav a:hover {
@@ -52,8 +54,33 @@ nav a:hover {
   color: var(--link-text-color-on-hover);
 }
 
+.selected-nav {
+  background-color: var(--link-bg-on-hover);
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border: none;
+  color: var(--link-text-color-on-hover);
+}
+
+.logout {
+  margin: 0 10px 0 10px;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+  color: rgb(180, 137, 51);
+  text-decoration: none;
+  transition: 0.15s ease-in-out;
+  background-color: var(--header-color);
+  border: 1px solid rgb(180, 137, 51);
+  border-radius: 3px;
+}
+
+.logout:hover {
+  background-color:rgb(255, 251, 243)
+}
+
 header {
-  background-color: rgb(245, 243, 239);
+  background-color: var(--header-color);
 }
 .nav-wrap {
   max-width: 1100px;
@@ -138,10 +165,158 @@ header {
   transition: 0.15s ease-in-out;
 }
 
+.image-wrapper img {
+  width: 400px;
+  height: auto;
+  border-radius: 3px;
+  border: 1px solid rgb(185, 185, 185);
+}
+
+/* Item forms for adding or editing */
+
 .form-wrapper {
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 50px;
   display: flex;
   justify-content: center;
+}
+
+.form-wrapper h2 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+}
+
+.item-form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.2rem 0.2rem 0.2rem #c7c8ce;
+  background-color: #EFF9F0;
+  border-radius: 3px;
+  width: 600px;
+  margin: 30px auto;
+  padding: 30px
+}
+
+.item-input {
+  margin: 10px;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 1.2rem;
+}
+
+.item-input[type=submit] {
+  padding:20px 15px; 
+  background:#2e964f;
+  color: white;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+  transition: 0.1s ease-in-out;
+}
+
+.item-input[type=submit]:hover {
+  background-color: #125226;
+  color: white;
+}
+
+.edit-button {
+  padding:20px 15px; 
+  background:#2e964f;
+  color: white;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+  transition: 0.1s ease-in-out;
+}
+
+.edit-button:hover {
+  background-color: #125226;
+  color: white;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+/* individual item view */
+
+.item-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-title-wrapper h2 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.item-title-wrapper h4 {
+  margin: 5px 0 0 23px;
+  padding: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: normal;
+}
+
+.update-button {
+  font-size: 1.6rem;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(36, 90, 190);
+  color: rgb(36, 90, 190);
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  transition: 0.1s ease-in-out;
+}
+
+.update-button:hover {
+  background-color: rgb(225, 235, 255);
+  border: 1px solid (36, 90, 190);
+}
+
+.delete-button {
+  font-size: 1.6rem;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(238, 23, 51);
+  color: rgb(238, 23, 51);
+  background-color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  transition: 0.1s ease-in-out;
+}
+
+.delete-button:hover {
+  background-color: rgb(255, 223, 227);
+  border: 1px solid (36, 90, 190);
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  height: 120px;
+  justify-content: space-between;
 }

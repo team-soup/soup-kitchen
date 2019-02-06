@@ -20,38 +20,41 @@ const Authenticate = App => LoginPage => {
             event.preventDefault();
             let loginObj = {
                 email : event.target[0].value,
-                password : event.target[0].value,
+                password : event.target[1].value,
             }
             axios
-            .post('http://localhost:8000/api/staff/login', loginObj)
+            .post('https://soup-kitchen-backend.herokuapp.com/api/staff/login',loginObj)
             .then(response => 
               {
-                console.log(response.data.message)
-                this.setState({token: response.data.decodedToken})
-                localStorage.setItem("token", response.data.decodedToken)
+                console.log(response.data)
+                this.setState({token: response.data.token})
+                localStorage.setItem("token", response.data.token)
                 this.setState({loggedIn: true});
               })
             .catch(err => {
+                alert("Wrong password, or user doesn't exist.")
                 console.log(err)
-                this.setState({loggedIn: true}) // TODO: TEMPORARY WHILE SERVER IS BEING WORKED ON
             });
           }
         handleRegister = (event) => {
             event.preventDefault();
             let registerObj = {
-                name : event.target[0].value,
-                role : event.target[1].value,
-                email : event.target[2].value,
-                password : event.target[3].value,
+                firstname : event.target[0].value,
+                lastname : event.target[1].value,
+                role : event.target[2].value,
+                email : event.target[3].value,
+                password : event.target[4].value,
             }
             axios
-            .post('http://localhost:8000/api/staff/register', registerObj)
+            .post('https://soup-kitchen-backend.herokuapp.com/api/staff/register', registerObj)
             .then(response => 
               {
                 console.log(response.data.message)
-                this.setState({token: response.data.decodedToken})
+                this.setState({token: response.data.token})
+                localStorage.setItem("token", response.data.token)
+                this.setState({loggedIn: true});
               })
-            .catch(err => console.log(err));
+            .catch(err => alert("Have you already used this email address to register? To reset your password, please contact the administrator."));
           }
         render() {
             if (this.state.loggedIn) {
