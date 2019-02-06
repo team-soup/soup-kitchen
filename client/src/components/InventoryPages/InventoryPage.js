@@ -119,7 +119,6 @@ class InventoryPage extends React.Component {
         .catch(err => {
             console.log(err)
         });
-        console.log(this.state);
     }
 
     addDefaultSrc = (e) => {
