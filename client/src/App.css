@@ -259,18 +259,18 @@ label {
 }
 
 .item-title-wrapper h2 {
-  margin: 5px 0 0 23px;
+  margin: 5px 10px 10px 5px;
   padding: 0;
-  font-size: 1.6rem;
+  font-size: 2.0rem;
   letter-spacing: 0.05rem;
   font-weight: bold;
   text-transform: capitalize;
 }
 
 .item-title-wrapper h4 {
-  margin: 5px 0 0 23px;
+  margin: 10px;
   padding: 0;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   letter-spacing: 0.05rem;
   font-weight: normal;
 }
@@ -319,4 +319,27 @@ label {
   margin: 30px;
   height: 120px;
   justify-content: space-between;
+}
+
+.quantity-modifier {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-modifier button {
+  font-size: 2rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(49, 206, 109);
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+  transition: 0.1s ease-in-out;
+}
+
+.quantity-modifier button:hover {
+  background-color: rgb(37, 146, 79);
 }

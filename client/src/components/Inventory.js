@@ -15,6 +15,7 @@ const Inventory = props => {
             >
             <img
                 className="item-list-image"
+                onError={props.onError}
                 src={item.imageURL}
                 alt={item.name}
             />

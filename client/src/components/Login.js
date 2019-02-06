@@ -76,7 +76,7 @@ const LinkButton = styled.button`
     border: none;
     background-color: white;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 20px;
 `;
 
 class Login extends React.Component {

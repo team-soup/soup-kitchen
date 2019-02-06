@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+//import { withRouter } from 'react-router';
 import axios from "axios";
 
 class ItemEditForm extends React.Component {
@@ -46,18 +46,10 @@ class ItemEditForm extends React.Component {
         this.state.item,options
       )
       .then(response => {
-        axios
-        .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
-        .then(response => 
-        {
-            this.setState({items: response.data.items})
-        })
-        .catch(err => {
-            console.log(err)
-        });
+        console.log(response)
+        this.props.handleUpdate();
         alert("Item updated successfully!")
-        window.location.reload();
-        this.props.history.push("/"); // TODO: make this update smoother.
+        this.props.history.push("/");
       })
       .catch(error => console.log(error));
   };

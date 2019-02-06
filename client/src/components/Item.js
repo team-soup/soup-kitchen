@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Item = ({ items, deleteItem, history, match }) => {
+const Item = ({ items, deleteItem, history, match, onError }) => {
   const item = items.find(thing => `${thing.id}` === match.params.id);
 
   if (!item) {
@@ -11,11 +11,11 @@ const Item = ({ items, deleteItem, history, match }) => {
     <div className="item-wrapper">
       <div className="item-header">
         <div className="image-wrapper">
-          <img src={item.imageURL} alt={item.name} />
+          <img onError={onError} src={item.imageURL} alt={item.name} />
         </div>
         <div className="item-title-wrapper">
           <h2>{item.name}</h2>
-          <h4>{item.amount} {item.unit}</h4>
+          <div className="quantity-modifier"><button>-</button><h4>{item.amount} {item.unit}</h4> <button>+</button></div>
           <h4>Category ID: {item.categoryID}</h4>
         </div>
       </div>

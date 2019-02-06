@@ -138,14 +138,34 @@ class InventoryPage extends React.Component {
         window.location.reload();
     }
 
+    setStateofInventoryPage = () => {
+        let options = { 
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            }}
+        axios
+        .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+        .then(response => 
+        {
+            this.setState({items: response.data.items})
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
+
+    addDefaultSrc = (e) => {
+        e.target.src = 'https://i.imgur.com/zpw4lgT.png'
+    }
+
     render() {
       return (
         <div className="inventory-page">
           <NavBar logOut={this.logOut}></NavBar>
-          <Route exact path="/" render={(props) => <Inventory items={this.state.items} {...props}/>}/>
+          <Route exact path="/" render={(props) => <Inventory onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
-          <Route path="/inventory/:id" render={(props) => <Item items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
-          <Route path="/inventory/edit" render={(props) => <ItemEditForm items={this.state.items} {...props}/>} />
+          <Route path="/inventory/:id" render={(props) => <Item onError={this.addDefaultSrc} items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
+          <Route path="/inventory/edit" render={(props) => <ItemEditForm handleUpdate={this.setStateofInventoryPage} items={this.state.items} {...props}/>} />
         </div>
       );
     }
