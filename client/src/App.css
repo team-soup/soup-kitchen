@@ -20,6 +20,10 @@ body {
   font-size: 62.5%;
 }
 
+a {
+  text-decoration: none;
+}
+
 .inventory-page {
   margin: 0 auto;
 }
@@ -34,7 +38,7 @@ nav {
   margin-left: auto;
 }
 
-nav a {
+nav .decor {
   margin: 0 10px 0 10px;
   padding: 10px 20px 10px 20px;
   font-size: 1.4rem;
@@ -47,7 +51,7 @@ nav a {
   border-radius: 3px;
 }
 
-nav a:hover {
+nav .decor:hover {
   background-color: var(--link-bg-on-hover);
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border: none;
@@ -393,3 +397,4 @@ label {
 .quantity-modifier button:hover {
   background-color: rgb(37, 146, 79);
 }
+

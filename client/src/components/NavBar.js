@@ -12,9 +12,9 @@ const NavBar = props => {
                     <h2>Admin Panel</h2>
                     </div>
                 <nav>
-                    <NavLink activeClassName="selected-nav" exact to="/">View Inventory</NavLink>
-                    <NavLink activeClassName="selected-nav" exact to="/add">Add Inventory</NavLink>
-                    <button className="logout" onClick={props.logOut}>Log Out</button>
+                    <NavLink className="decor" activeClassName="selected-nav" exact to="/">View Inventory</NavLink>
+                    <NavLink className="decor" activeClassName="selected-nav" exact to="/add">Add Inventory</NavLink>
+                    <a href="/" className="nodecoration"><button className="logout" onClick={props.logOut}>Log Out</button></a>
                     {/* <NavLink to="/edit">Edit Inventory</NavLink> */}
                 </nav>
             </div>
