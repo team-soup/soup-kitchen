@@ -15,7 +15,6 @@ const NavBar = props => {
                     <NavLink className="decor" activeClassName="selected-nav" exact to="/">View Inventory</NavLink>
                     <NavLink className="decor" activeClassName="selected-nav" exact to="/add">Add Inventory</NavLink>
                     <a href="/" className="nodecoration"><button className="logout" onClick={props.logOut}>Log Out</button></a>
-                    {/* <NavLink to="/edit">Edit Inventory</NavLink> */}
                 </nav>
             </div>
         </header>

@@ -164,7 +164,7 @@ class InventoryPage extends React.Component {
           <NavBar logOut={this.logOut}></NavBar>
           <Route exact path="/" render={(props) => <Inventory onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
-          <Route path="/inventory/:id" render={(props) => <Item onError={this.addDefaultSrc} items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
+          <Route path="/inventory/:id" render={(props) => <Item handleUpdate={this.setStateofInventoryPage} onError={this.addDefaultSrc} items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
           <Route path="/inventory/edit" render={(props) => <ItemEditForm handleUpdate={this.setStateofInventoryPage} items={this.state.items} {...props}/>} />
         </div>
       );
