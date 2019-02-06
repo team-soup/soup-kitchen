@@ -130,7 +130,7 @@ header {
 }
 
 .item-card:hover .text-bubble {
-  transform: scaleX(1.03) translateY(-10px);
+  transform: scaleX(1.03) translateY(-2px);
   background-color: var(--link-bg-on-hover);
   border-radius: 0;
 }
@@ -144,12 +144,48 @@ header {
   color: var(--link-text-color-on-hover);
 }
 
+/* if item is OUT OF STOCK */
+
+.item-card-OUT {
+  width: 150px;
+  margin: 0 10px 30px;
+  border: 5px solid red;
+  border-radius: 3px;
+  transition: 0.15s ease-in-out;
+}
+
+.item-card-OUT p {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+  color: rgb(25, 26, 25);
+  transition: 0.15s ease-in-out;
+}
+
+.item-card-OUT:hover {
+  transform: scale(1.02);
+}
+
+.item-card-OUT:hover .text-bubble {
+  transform: translateY(-2px);
+  background-color: var(--link-bg-on-hover);
+  border-radius: 0;
+}
+
+.item-card-OUT:hover .item-list-image-OUT {
+  filter: brightness(0.9);
+}
+
+.item-card-OUT:hover p {
+  color: var(--link-text-color-on-hover);
+}
+
 .text-bubble {
   padding: 10px;
   background-color: #F0F1EF;
   border-radius: 3px;
   margin: 0 auto;
-  transform: translateY(-10px);
+  transform: translateY(-2px);
   transition: 0.15s ease-in-out;
   cursor: pointer;
 }
@@ -158,11 +194,25 @@ header {
   font-size: 2.0rem;
 }
 
+.quantity-OUT {
+  font-size: 2.0rem;
+  color: red;
+}
+
 .item-list-image {
   width: 100%;
   border-radius: 3px;
   cursor: pointer;
   transition: 0.15s ease-in-out;
+}
+
+.item-list-image-OUT {
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  /*cool idea for filtering it to look red, but maybe it doesn't actually look so slick. */
+  /*filter: contrast(0.8) sepia(100%) hue-rotate(310deg) brightness(110%) saturate(300%);*/
 }
 
 .image-wrapper img {
