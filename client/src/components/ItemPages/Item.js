@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from "axios";
-// ({ items, deleteItem, history, match, onError, decrement, increment }) => {
 
 class Item extends React.Component {
   constructor(props) {

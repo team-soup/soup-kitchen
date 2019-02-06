@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import InventoryPage from "./components/InventoryPage";
+import InventoryPage from "./components/InventoryPages/InventoryPage";
 import './App.css';
-import Login from "./components/Login";
-import Authenticate from "./components/Authenticate";
+import Login from "./components/Login/Login";
+import Authenticate from "./components/Login/Authenticate";
 
 class App extends Component {
   constructor(props) {

@@ -1,17 +1,19 @@
 import React from "react";
-import NavBar from "./NavBar";
-import Inventory from "./Inventory";
+import NavBar from "../NavBar";
+import InventoryWrapper from "./InventoryWrapper";
 import axios from "axios";
 import {Route} from "react-router-dom";
 import AddInventory from "./AddInventory";
-import Item from "./Item";
-import ItemEditForm from "./ItemEditForm";
+import Item from "../ItemPages/Item";
+import ItemEditForm from "../ItemPages/ItemEditForm";
 
 class InventoryPage extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         items: [],
+        filtered_items : [],
+        searching: false,
         token: null,
       }
     }
@@ -122,11 +124,28 @@ class InventoryPage extends React.Component {
         e.target.src = 'https://i.imgur.com/zpw4lgT.png'
     }
 
+    handleSearch = e => {
+        let string = e.target.value;
+        let obj = this.state;
+        if (string.length > 0) {
+          const searched_array = obj.items.filter(item => {
+            return item.name.toUpperCase().indexOf(string.toUpperCase()) > -1;
+          });
+          obj.filtered_items = searched_array;
+          obj.searching = true;
+          this.setState(obj);
+        } else if (string.length === 0) {
+          obj.filtered_items = [];
+          obj.searching = false;
+          this.setState(obj);
+        }
+      };
+
     render() {
       return (
         <div className="inventory-page">
           <NavBar logOut={this.logOut}></NavBar>
-          <Route exact path="/" render={(props) => <Inventory onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>
+          <Route exact path="/" render={(props) => <InventoryWrapper handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
           <Route path="/inventory/:id" render={(props) => <Item handleUpdate={this.setStateofInventoryPage} onError={this.addDefaultSrc} items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
           <Route path="/inventory/edit" render={(props) => <ItemEditForm handleUpdate={this.setStateofInventoryPage} items={this.state.items} {...props}/>} />

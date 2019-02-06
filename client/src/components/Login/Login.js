@@ -1,5 +1,5 @@
 import React from "react";
-import soup from "../img/crockpot_logo.png"
+import soup from "../../img/crockpot_logo.png"
 import styled from "styled-components";
 
 const Wrapper = styled.div `

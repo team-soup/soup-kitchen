@@ -58,7 +58,7 @@ nav .decor:hover {
   color: var(--link-text-color-on-hover);
 }
 
-.selected-nav {
+nav .selected-nav {
   background-color: var(--link-bg-on-hover);
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   border: none;
