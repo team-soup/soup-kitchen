@@ -55,7 +55,9 @@ class ItemEditForm extends React.Component {
         .catch(err => {
             console.log(err)
         });
-        console.log(response)
+        alert("Item updated successfully!")
+        window.location.reload();
+        this.props.history.push("/"); // TODO: make this update smoother.
       })
       .catch(error => console.log(error));
   };
@@ -63,7 +65,6 @@ class ItemEditForm extends React.Component {
   handleClick = e => {
     e.preventDefault();
     this.updateItem();
-    this.props.history.push('/');
   };
 
   render() {

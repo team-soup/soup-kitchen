@@ -15,7 +15,7 @@ const Inventory = props => {
             >
             <img
                 className="item-list-image"
-                src={item.imageUrl}
+                src={item.imageURL}
                 alt={item.name}
             />
             <div className="text-bubble">

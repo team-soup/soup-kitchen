@@ -165,6 +165,13 @@ header {
   transition: 0.15s ease-in-out;
 }
 
+.image-wrapper img {
+  width: 400px;
+  height: auto;
+  border-radius: 3px;
+  border: 1px solid rgb(185, 185, 185);
+}
+
 /* Item forms for adding or editing */
 
 .form-wrapper {
@@ -269,7 +276,9 @@ label {
 }
 
 .update-button {
-  height: 30px;
+  font-size: 1.6rem;
+  height: 50px;
+  padding: 0 20px;
   border-radius: 5px;
   border: 1px solid rgb(36, 90, 190);
   color: rgb(36, 90, 190);
@@ -286,7 +295,9 @@ label {
 }
 
 .delete-button {
-  height: 30px;
+  font-size: 1.6rem;
+  height: 50px;
+  padding: 0 20px;
   border-radius: 5px;
   border: 1px solid rgb(238, 23, 51);
   color: rgb(238, 23, 51);
@@ -306,6 +317,6 @@ label {
   display: flex;
   flex-direction: column;
   margin: 30px;
-  height: 80px;
+  height: 120px;
   justify-content: space-between;
 }

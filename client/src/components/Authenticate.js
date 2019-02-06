@@ -32,6 +32,7 @@ const Authenticate = App => LoginPage => {
                 this.setState({loggedIn: true});
               })
             .catch(err => {
+                alert("Wrong password, or user doesn't exist.")
                 console.log(err)
             });
           }
@@ -53,7 +54,7 @@ const Authenticate = App => LoginPage => {
                 localStorage.setItem("token", response.data.token)
                 this.setState({loggedIn: true});
               })
-            .catch(err => console.log(err));
+            .catch(err => alert("Have you already used this email address to register? To reset your password, please contact the administrator."));
           }
         render() {
             if (this.state.loggedIn) {
