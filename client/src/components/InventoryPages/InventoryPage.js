@@ -147,7 +147,7 @@ class InventoryPage extends React.Component {
       };
 
     clearSearch = () => {
-        this.setState({filtered_items: [], searching:false});
+        this.setState({filtered_items: [], searching:false, selected_category: "-1"});
     }
 
     handleCategory = (id) => {
