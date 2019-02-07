@@ -33,7 +33,7 @@ class InventoryPage extends React.Component {
             this.setState({items: response.data.items})
         })
         .catch(err => {
-            console.log(err)
+            console.log(err);
         });
     }
 
