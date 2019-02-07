@@ -25,6 +25,7 @@ const LoginContainer = styled.div`
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
+    box-shadow: 0 0 30px black;
     `;
 
 const RegisterContainer = styled.div`
@@ -34,6 +35,7 @@ const RegisterContainer = styled.div`
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
+    box-shadow: 0 0 30px black;
     `;
 
 
@@ -138,9 +140,7 @@ class Login extends React.Component {
                             <LoginButton type="submit" value="Log In"></LoginButton>
                             <LinkButton type="button" className="link-button" onClick={this.showLogin}>Already have an account? Log in here.</LinkButton>
                         </LoginForm>
-                        
                     </RegisterContainer>
-                    
                     }
                 </FormContainer>
             </Wrapper>

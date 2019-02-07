@@ -5,6 +5,7 @@ const Authenticate = App => LoginPage => {
     return class extends React.Component {
         constructor() {
             super();
+            this.snackbar = React.createRef();
             this.state = {
                 loggedIn : false,
                 token : null,
@@ -45,7 +46,8 @@ const Authenticate = App => LoginPage => {
                 this.setState({loggedIn: true});
               })
             .catch(err => {
-                alert("Wrong password, or user doesn't exist.")
+                this.showSnackBar("Wrong password, or user doesn't exist.");
+                //alert("Wrong password, or user doesn't exist.")
                 console.log(err)
             });
           }
@@ -67,10 +69,20 @@ const Authenticate = App => LoginPage => {
                 localStorage.setItem("token", response.data.token)
                 this.setState({loggedIn: true});
               })
-            .catch(err => alert("Have you already used this email address to register? To reset your password, please contact the administrator."));
+            .catch(err => 
+                {
+                    this.showSnackBar("Email already in use, or registration error.");
+                    //alert("Have you already used this email address to register? To reset your password, please contact the administrator.")
+                });
           }
         handleTokenExpired = () => {
             this.setState({loggedIn : false});
+        }
+        showSnackBar = (text) => {
+            let x = this.snackbar.current;
+            x.textContent = text;
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
         render() {
             if (this.state.loggedIn) {
@@ -78,7 +90,9 @@ const Authenticate = App => LoginPage => {
                 <App handleTokenExpired={this.handleTokenExpired}/>
             )
             } else {
-                return (<LoginPage handleLogin={this.handleLogin} handleRegister={this.handleRegister} />)
+                return (
+                <div><LoginPage handleLogin={this.handleLogin} handleRegister={this.handleRegister} />
+                 <div style={{"backgroundColor": "#7F0000", "opacity":0.8}} id="snackbar" ref={this.snackbar}><h1>Please contact the administrator.</h1></div></div>)
             }
         }
     }

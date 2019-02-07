@@ -53,7 +53,7 @@ class AddInventory extends React.Component {
                     {/* <input className="item-input" type="number" placeholder="category ID"/> */}
                     <input className="item-input" value="Add to Inventory" type="submit"/>
                 </form>
-                <div id="snackbar" ref={this.snackbar}><h1>Successfully added item!</h1></div>
+                <div id="snackbaradd" ref={this.snackbar}><h1>Successfully added item!</h1></div>
             </div>
         )
     }
