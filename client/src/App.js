@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <InventoryPage/>
+        <InventoryPage handleTokenExpired={this.props.handleTokenExpired}/>
       </div>
     );
   }

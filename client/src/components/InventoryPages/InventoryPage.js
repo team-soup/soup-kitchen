@@ -19,9 +19,12 @@ class InventoryPage extends React.Component {
       }
     }
     componentDidMount() {
-        if (localStorage.getItem("token")) {
-            this.setState({loggedIn: true});
-            this.setState({token:localStorage.getItem("token")});
+        if (localStorage.getItem("expiry")) {
+            if (localStorage.getItem("expiry") < Number(Date.now().toString().slice(0,10))) {
+                this.props.handleTokenExpired();
+            } else {
+                this.setState({token:localStorage.getItem("token")});
+            }
         }
         let options = { 
             headers: {
@@ -32,9 +35,12 @@ class InventoryPage extends React.Component {
         .then(response => 
         {
             this.setState({items: response.data.items})
+            localStorage.setItem("expiry", response.data.decodedToken.exp)
         })
         .catch(err => {
             console.log(err);
+            alert("Unable to get items from backend. Contact an administrator.")
+            localStorage.clear();
         });
     }
 

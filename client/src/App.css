@@ -416,15 +416,21 @@ label {
   letter-spacing: 3px;
   cursor: pointer;
   border: none;
+  transition: 0.1s ease-in-out;
 }
 
 .category:hover {
-  background-color: rgb(26, 26, 26)
+  background-color: rgb(20, 27, 20)
 }
 .category-active {
   background-color: #fff;
   color: #333;
   border: 2px solid #333;
+}
+
+.category-active:hover { 
+  color: black;
+  background-color: rgb(245, 253, 248);
 }
 
 .categories {

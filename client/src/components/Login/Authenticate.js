@@ -11,9 +11,23 @@ const Authenticate = App => LoginPage => {
             }
         }
         componentDidMount() {
-            if (localStorage.getItem("token")) {
-                this.setState({loggedIn: true});
-                this.setState({token:localStorage.getItem("token")});
+            if (localStorage.getItem("expiry")) {
+                let expiry = localStorage.getItem("expiry")
+                if (Number(Date.now().toString().slice(0,10)) > expiry) {
+                    localStorage.clear();
+                    window.location.reload();
+                    this.setState({loggedIn:false});
+                } else {
+                    if (localStorage.getItem("token")) {
+                        this.setState({loggedIn: true});
+                        this.setState({token:localStorage.getItem("token")});
+                    } else {
+                        localStorage.clear();
+                    }
+                }
+            }
+            else {
+                this.setState({loggedIn:false});
             }
         }
         handleLogin = (event) => {
@@ -26,7 +40,6 @@ const Authenticate = App => LoginPage => {
             .post('https://soup-kitchen-backend.herokuapp.com/api/staff/login',loginObj)
             .then(response => 
               {
-                console.log(response.data)
                 this.setState({token: response.data.token})
                 localStorage.setItem("token", response.data.token)
                 this.setState({loggedIn: true});
@@ -56,10 +69,13 @@ const Authenticate = App => LoginPage => {
               })
             .catch(err => alert("Have you already used this email address to register? To reset your password, please contact the administrator."));
           }
+        handleTokenExpired = () => {
+            this.setState({loggedIn : false});
+        }
         render() {
             if (this.state.loggedIn) {
             return (
-                <App/>
+                <App handleTokenExpired={this.handleTokenExpired}/>
             )
             } else {
                 return (<LoginPage handleLogin={this.handleLogin} handleRegister={this.handleRegister} />)
