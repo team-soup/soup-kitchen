@@ -1,11 +1,16 @@
 import React from "react";
 import soup from "../../img/crockpot_logo.png"
 import styled from "styled-components";
+import background from "../../img/wood.jpg";
 
 const Wrapper = styled.div `
+    background-image: url(${background});
+    background-size: cover;
+    height: 86vh;
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding-top: 3vh;
+    padding-bottom: 14vh;
 `;
 
 const FormContainer = styled.div`
@@ -16,7 +21,7 @@ const FormContainer = styled.div`
 const LoginContainer = styled.div`
     margin: 30px 0 0 0;
     width: 100%;
-    height: 400px;
+    height: 450px;
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -25,7 +30,7 @@ const LoginContainer = styled.div`
 const RegisterContainer = styled.div`
     margin: 30px 0 0 0;
     width: 100%;
-    height: 500px;
+    height: 580px;
     background: #fff;
     border: 1px solid #e2e2e2;
     border-radius: 3px;
@@ -79,6 +84,14 @@ const LinkButton = styled.button`
     margin-top: 20px;
 `;
 
+const Title = styled.h1`
+    text-align:center;
+    letter-spacing: 0.5px;
+    font-weight: normal;
+    color: #5A0C0C;
+    font-size: 1.8rem;
+`;
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -101,6 +114,7 @@ class Login extends React.Component {
                         <ImageContainer>
                             <Image alt="soup" src={soup}/>
                         </ImageContainer>
+                        <Title>Soup Kitchen</Title>
                         <LoginForm onSubmit={(e) => {this.props.handleLogin(e)}}>
                             <InputText type="text" placeholder="Email"/>
                             <InputText type="password" placeholder="Password"/>
@@ -114,6 +128,7 @@ class Login extends React.Component {
                         <ImageContainer>
                             <Image alt="soup" src={soup}/>
                         </ImageContainer>
+                        <Title>Soup Kitchen</Title>
                         <LoginForm onSubmit={(e) => {this.props.handleRegister(e)}}>
                             <InputText type="text" placeholder="First Name"/>
                             <InputText type="text" placeholder="Last Name"/>

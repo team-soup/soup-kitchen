@@ -44,9 +44,8 @@ class InventoryPage extends React.Component {
         });
     }
 
-    handleAdd = (e, categoryID) => {
+    handleAdd = (e, categoryID, showSnackBar) => {
         e.preventDefault();
-        console.log(e.target, categoryID)
         let addObj = {
             name : e.target[0].value,
             amount : parseInt(e.target[1].value),
@@ -54,7 +53,6 @@ class InventoryPage extends React.Component {
             imageUrl : e.target[3].value,
             categoryID : parseInt(categoryID),
         }
-        console.log(addObj)
         let options = { 
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -70,9 +68,8 @@ class InventoryPage extends React.Component {
             .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
             .then(response => 
             {
-                console.log(response.data);
                 this.setState({items: response.data.items})
-                alert("Add successful!") // TODO: make nicer alert in a div
+                showSnackBar();
             })
             .catch(err => {
                 console.log(err)
@@ -93,12 +90,10 @@ class InventoryPage extends React.Component {
         axios
         .delete(`https://soup-kitchen-backend.herokuapp.com/api/items/${itemID}`, options)
         .then(response => { 
-            console.log("deleted records: " + response.data.deletedRecords);
             axios
             .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
             .then(response => 
             {
-                console.log(response.data);
                 this.setState({items: response.data.items})
             })
             .catch(err => {

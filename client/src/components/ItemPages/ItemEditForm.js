@@ -36,6 +36,7 @@ class ItemEditForm extends React.Component {
       });
 
   }
+
   changeHandler = e => {
     this.setState({
       item: {
@@ -69,7 +70,6 @@ class ItemEditForm extends React.Component {
       )
       .then(response => {
         this.props.handleUpdate();
-        alert("Item updated successfully!")
         this.props.history.push("/");
       })
       .catch(error => console.log(error));
@@ -84,7 +84,6 @@ class ItemEditForm extends React.Component {
     const options = this.state.categories.map(obj => ({value: obj.id, label: obj.name}))
     return (
       <div className="form-wrapper">
-      <h2 style={{"textTransform": "capitalize"}}>Editing Item ID {this.state.id}: {this.state.item.name}</h2>
       <form className="item-form" action="">
         <label>Item Name:</label>
         <input
