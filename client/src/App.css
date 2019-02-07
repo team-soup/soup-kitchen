@@ -402,3 +402,37 @@ label {
   font-size: 1.2rem;
   margin: 9px;
 }
+
+.category {
+  display: flex;
+  justify-content: none;
+  align-items: center;
+  flex-direction: row;
+  color: #fff;
+  background-color: #333;
+  margin: 5px 5px;
+  padding: 5px 20px;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  border: none;
+}
+
+.category:hover {
+  background-color: rgb(26, 26, 26)
+}
+.category-active {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.categories {
+  max-width: 900px;
+  margin: 15px auto 0 auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

@@ -15,6 +15,7 @@ class InventoryPage extends React.Component {
         filtered_items : [],
         searching: false,
         token: null,
+        selected_category: "-1",
       }
     }
     componentDidMount() {
@@ -148,14 +149,42 @@ class InventoryPage extends React.Component {
         this.setState({filtered_items: [], searching:false});
     }
 
+    handleCategory = (id) => {
+        let options = { 
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            }}
+        if (id === "-1") {
+            axios
+            .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+            .then(response => 
+            {
+                this.setState({items: response.data.items, selected_category: id})
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        } else {
+            axios
+            .get(`https://soup-kitchen-backend.herokuapp.com/api/categories/${id}`, options)
+            .then(response => 
+            {
+                this.setState({items: response.data.category.items, selected_category: id})
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+    }
+
     render() {
       return (
         <div className="inventory-page">
           <NavBar clearSearch={this.clearSearch} logOut={this.logOut}></NavBar>
           {this.state.searching ? 
-          <Route exact path="/" render={(props) => <InventoryWrapper clearSearch={this.clearSearch} handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.filtered_items} {...props}/>}/> 
+          <Route exact path="/" render={(props) => <InventoryWrapper selectedCategory={this.state.selected_category} handleCategory={this.handleCategory} clearSearch={this.clearSearch} handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.filtered_items} {...props}/>}/> 
           :
-          <Route exact path="/" render={(props) => <InventoryWrapper clearSearch={this.clearSearch} handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>}
+          <Route exact path="/" render={(props) => <InventoryWrapper selectedCategory={this.state.selected_category} handleCategory={this.handleCategory} clearSearch={this.clearSearch} handleSearch={this.handleSearch} onError={this.addDefaultSrc} items={this.state.items} {...props}/>}/>}
           
           <Route path="/add" render={(props) => <AddInventory handleAdd={this.handleAdd} {...props}/>}/>
           <Route path="/inventory/:id" render={(props) => <Item handleUpdate={this.setStateofInventoryPage} onError={this.addDefaultSrc} items={this.state.items} updateItem={this.updateItem} deleteItem={this.deleteItem} {...props}/>} />
