@@ -37,15 +37,17 @@ class InventoryPage extends React.Component {
         });
     }
 
-    handleAdd = e => {
+    handleAdd = (e, categoryID) => {
         e.preventDefault();
+        console.log(e.target, categoryID)
         let addObj = {
             name : e.target[0].value,
             amount : parseInt(e.target[1].value),
             unit : e.target[2].value,
             imageUrl : e.target[3].value,
-            categoryID : parseInt(e.target[4].value),
+            categoryID : parseInt(categoryID),
         }
+        console.log(addObj)
         let options = { 
             headers: {
                 Authorization: localStorage.getItem("token"),

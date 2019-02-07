@@ -398,3 +398,7 @@ label {
   background-color: rgb(37, 146, 79);
 }
 
+.select {
+  font-size: 1.2rem;
+  margin: 9px;
+}
