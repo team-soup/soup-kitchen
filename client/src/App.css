@@ -451,7 +451,7 @@ label {
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 500px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
+  margin-left: -250px; /* Divide value of min-width by 2 */
   background-color: #333; /* Black background color */
   color: #fff; /* White text color */
   text-align: center; /* Centered text */
@@ -476,7 +476,7 @@ label {
 #snackbaradd {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 300px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
+  margin-left: -150px; /* Divide value of min-width by 2 */
   background-color: #333; /* Black background color */
   color: #fff; /* White text color */
   text-align: center; /* Centered text */
