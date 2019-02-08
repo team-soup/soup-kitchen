@@ -84,6 +84,13 @@ const Authenticate = App => LoginPage => {
             x.className = "show";
             setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
+
+        // tokenExp = () => {
+        //     setTimeout(() =>{alert('Session timed out due to inactivity. Please log in again.')}, 1500);
+        //     this.setState({loggedIn: false});
+        //     localStorage.clear();
+        //     console.log(this.history);
+        // }
         render() {
             if (this.state.loggedIn) {
             return (
