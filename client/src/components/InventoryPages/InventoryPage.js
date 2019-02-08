@@ -148,6 +148,22 @@ class InventoryPage extends React.Component {
 
     clearSearch = () => {
         this.setState({filtered_items: [], searching:false, selected_category: "-1"});
+        let options = { 
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            }}
+        axios
+        .get('https://soup-kitchen-backend.herokuapp.com/api/items', options)
+        .then(response => 
+        {
+            this.setState({items: response.data.items})
+            localStorage.setItem("expiry", response.data.decodedToken.exp)
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Unable to get items from backend. Contact an administrator.")
+            localStorage.clear();
+        });
     }
 
     handleCategory = (id) => {
